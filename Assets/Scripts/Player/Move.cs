@@ -62,13 +62,19 @@ public class Move : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        ChangeMoveVector(180);
-        _isMoving = false;
-        _canMove = 0;
+        if (collision.transform.tag == "Wall")
+        {       
+            ChangeMoveVector(180);
+            _isMoving = false;
+            _canMove = 0;
+        }
+
+        if (collision.transform.tag == "Enemy") {
+            Kill();
+        }
     }
 
-    private void OnCollisionStay2D(Collision2D collision) {
-        _isMoving = false;
-        _canMove = 0;
+    private void Kill() {
+        Debug.Log("Kill");
     }
 }
