@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    public Vector3 _move;
-    public float _speed;
+    [SerializeField] private Vector3 _move;
+    [SerializeField] private float _speed;
+    [SerializeField] private EnemyColliders[] _raycast;
+    
 
     void Start()
     {
@@ -15,7 +17,7 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += _move*_speed*Time.deltaTime;
+        transform.position += _move * _speed * Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -25,6 +27,17 @@ public class EnemyMove : MonoBehaviour
     }
 
     private void GetRandomMove() {
-        _move = Vector3.zero;
+        List<Vector2> possibleMoves = new List<Vector2>();
+
+        for (int i=0; i < _raycast.Length;i++) {
+            if (!_raycast[i].GetHit()) {
+                possibleMoves.Add(_raycast[i]._pointVector);
+                Debug.Log("ADD! " + _raycast[i]._pointVector);
+            }
+        }
+        int index = Random.Range(0, 100) % possibleMoves.Count;
+        Debug.Log(index);                
+        _move = possibleMoves[index];
     }
 }
+ 

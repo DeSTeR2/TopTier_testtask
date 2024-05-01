@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class EnemyColliders : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log(transform.name);
+    public float _distance;
+    public Vector2 _pointVector;
+
+    public bool GetHit() {
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, _pointVector, _distance,LayerMask.GetMask("UI"));
+        return (hit.collider != null);
     }
 }

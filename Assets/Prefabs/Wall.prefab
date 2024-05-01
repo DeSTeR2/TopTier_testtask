@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3236143952462878356}
   - component: {fileID: 3779371014309563991}
+  - component: {fileID: 913371062536312145}
   m_Layer: 5
   m_Name: Wall
   m_TagString: Wall
@@ -157,3 +158,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100.125465, y: 99.63785}
   m_EdgeRadius: 0
+--- !u!70 &913371062536312145
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292804539670069424}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.25984684, y: 0.39323047}
+  m_Size: {x: 99.14241, y: 103.03511}
+  m_Direction: 0
