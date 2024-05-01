@@ -12,6 +12,6 @@ public class ChangeBGColor : MonoBehaviour
     }
 
     public void ChangeColor() {
-        _image.color = Random.ColorHSV(0.4f,0.7f);
+        _image.color = Random.ColorHSV(0,1,0.4f,1f,0.5f,1f);
     }
 }
