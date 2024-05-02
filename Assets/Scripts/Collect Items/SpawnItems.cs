@@ -33,9 +33,7 @@ public class SpawnItems : MonoBehaviour
     }
 
     public void Respawn() {
-        //Destroy(_currentObject);
         _pickUpSource.PlayOneShot(_pickUpSound);
-        Debug.Log("PLAY");
         Spawn();
     }
 }

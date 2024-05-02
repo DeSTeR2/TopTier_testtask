@@ -32,11 +32,9 @@ public class EnemyMove : MonoBehaviour
         for (int i=0; i < _raycast.Length;i++) {
             if (!_raycast[i].GetHit()) {
                 possibleMoves.Add(_raycast[i]._pointVector);
-                Debug.Log("ADD! " + _raycast[i]._pointVector);
             }
         }
         int index = Random.Range(0, 100) % possibleMoves.Count;
-        Debug.Log(index);                
         _move = possibleMoves[index];
     }
 }
