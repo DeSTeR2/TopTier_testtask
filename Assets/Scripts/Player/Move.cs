@@ -12,11 +12,11 @@ public class Move : MonoBehaviour
     public float _rotationAngle;
     public int _angle = 60;
 
-    public bool _isMoving = false;
+    private bool _isMoving = false;
 
     private int _canMove = 0;
     private Rigidbody2D _rb;
-    public float _fullRotationAngle = 0;
+    private float _fullRotationAngle = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -68,13 +68,5 @@ public class Move : MonoBehaviour
             _isMoving = false;
             _canMove = 0;
         }
-
-        if (collision.transform.tag == "Enemy") {
-            Kill();
-        }
-    }
-
-    private void Kill() {
-        Debug.Log("Kill");
     }
 }
