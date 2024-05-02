@@ -152,8 +152,6 @@ MonoBehaviour:
   _arrow: {fileID: 1319251452907026463}
   _rotationAngle: 0.7
   _angle: 180
-  _isMoving: 0
-  _fullRotationAngle: 0
 --- !u!50 &8894703087319386070
 Rigidbody2D:
   serializedVersion: 4
