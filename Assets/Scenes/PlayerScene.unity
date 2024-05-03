@@ -265,7 +265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -25}
+  m_AnchoredPosition: {x: 100, y: -108.79999}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178855056
@@ -1936,6 +1936,10 @@ PrefabInstance:
       propertyPath: _audioManager
       value: 
       objectReference: {fileID: 1772881609}
+    - target: {fileID: 7939411857015285843, guid: 6a4d1e55152738a41832675f1d1cb0b9, type: 3}
+      propertyPath: _rotationSpeed
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
