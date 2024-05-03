@@ -110,7 +110,7 @@ public class Move : MonoBehaviour
 
     private void MovePlayer() {
         _rotation.SetActive(false);
-        _audioManager.PlaySound(_moveSound);
+        if (!_isDead) _audioManager.PlaySound(_moveSound);
         _isMoving = true;
         _canMove = 1;
         _rotationAngle = Mathf.Abs(_rotationAngle);
