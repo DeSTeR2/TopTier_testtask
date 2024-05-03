@@ -22,6 +22,9 @@ public class Move : MonoBehaviour
     [SerializeField] private AudioClip _moveSound;
     [SerializeField] private AudioManager _audioManager;
 
+    [Space]
+    [SerializeField] float _scaler;
+
     private bool _isMoving = false;
     private bool _isDead = false;
     
@@ -34,6 +37,13 @@ public class Move : MonoBehaviour
     void Start() {
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
+
+        ReSize();
+    }
+
+    private void ReSize() {
+        var width = Camera.main.orthographicSize * 2.0 * Screen.width / Screen.height;
+        transform.localScale = new Vector3((float)width / _scaler, (float)width / _scaler, (float)width / _scaler);
     }
 
     private void OnEnable() {
@@ -41,6 +51,7 @@ public class Move : MonoBehaviour
         _isDead = false;
         _isMoving = false;
         _angleToUse = 360;
+        GetComponent<CollecItems>().SetScoreZero();
         _rotation.SetActive(true);
     }
 
@@ -48,7 +59,6 @@ public class Move : MonoBehaviour
     void Update() 
     {
         if (_isDead) return;
-
         if (!_isMoving) {
             ChangeMoveVector(_rotationAngle);
             _arrow.ChangePosition(_move + transform.position);

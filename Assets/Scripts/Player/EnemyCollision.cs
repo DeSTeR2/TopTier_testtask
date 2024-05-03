@@ -37,7 +37,7 @@ public class EnemyCollision : MonoBehaviour
     }
 
     private IEnumerator Death() {
-        _afterDeath.SetActive(true);
+        _afterDeath.SetActive(true);    
         yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
         _enemyController.SetActive(false);

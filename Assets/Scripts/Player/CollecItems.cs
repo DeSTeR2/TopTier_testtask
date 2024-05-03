@@ -9,7 +9,7 @@ public class CollecItems : MonoBehaviour
     [SerializeField] SpawnItems _spawnItems;
     [SerializeField] TextMeshProUGUI _scoreText;
     
-    private float _score;
+    public int _score = 0;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Item") {
@@ -18,6 +18,11 @@ public class CollecItems : MonoBehaviour
             _spawnItems.Respawn();
             collision.gameObject.transform.GetComponentInParent<ItemAnimation>().Delete();
         }
+    }
+
+    public void SetScoreZero() {
+        _score = 0;
+        _scoreText.text = _score.ToString();
     }
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using DG.Tweening.Core;
 
 public class AfterDeathAnim : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class AfterDeathAnim : MonoBehaviour
     Vector3 _startPos;
 
     private void Start() {
-        _startPos = transform.position; 
+        _startPos = transform.position;
+        DOTween.Init();
     }
     // Start is called before the first frame update
     private void OnEnable() {
@@ -19,7 +21,9 @@ public class AfterDeathAnim : MonoBehaviour
             .SetEase(Ease.InOutExpo);
     }
 
-    private void OnDisable() {
+    public void SetDefaulPosition() {
+        DOTween.Clear();
         transform.position = _startPos;
+
     }
 }
