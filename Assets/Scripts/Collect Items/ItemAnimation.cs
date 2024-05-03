@@ -6,8 +6,6 @@ using DG.Tweening;
 public class ItemAnimation : MonoBehaviour
 {
     [SerializeField] float _animTime;
-    [SerializeField] AudioSource _pickUp;
-    // Start is called before the first frame update
     void Start()
     {
         //_particles.Stop();
