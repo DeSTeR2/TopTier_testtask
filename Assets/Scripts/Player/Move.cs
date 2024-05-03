@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
     [SerializeField] private Arrow _arrow;
     [SerializeField] private float _rotationAngle;
     [SerializeField] private int _angle;
+    [SerializeField] private float _rotationSpeed = 1;
     [SerializeField] private GameObject[] colliders;
 
     [Space]
@@ -60,7 +61,7 @@ public class Move : MonoBehaviour
     {
         if (_isDead) return;
         if (!_isMoving) {
-            ChangeMoveVector(_rotationAngle);
+            ChangeMoveVector(_rotationAngle* _rotationSpeed * Time.deltaTime);
             _arrow.ChangePosition(_move + transform.position);
         } else {
             transform.position += (_move * _speed * Time.deltaTime)*_canMove;
