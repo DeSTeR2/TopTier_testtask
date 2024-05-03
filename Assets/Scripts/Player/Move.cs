@@ -55,11 +55,14 @@ public class Move : MonoBehaviour
         GetComponent<CollecItems>().SetScoreZero();
         _rotation.SetActive(true);
     }
-
-    // Update is called once per frame
     void Update() 
     {
         if (_isDead) return;
+
+        if (Input.GetMouseButtonDown(0)) {
+            MovePlayer();
+        }
+
         if (!_isMoving) {
             ChangeMoveVector(_rotationAngle* _rotationSpeed * Time.deltaTime);
             _arrow.ChangePosition(_move + transform.position);
@@ -109,9 +112,9 @@ public class Move : MonoBehaviour
         _move.y = newVector.y;
     }
 
-    private void MovePlayer() {
+    public void MovePlayer() {
         _rotation.SetActive(false);
-        if (!_isDead) _audioManager.PlaySound(_moveSound);
+        if (!_isDead && !_isMoving) _audioManager.PlaySound(_moveSound);
         _isMoving = true;
         _canMove = 1;
         _rotationAngle = Mathf.Abs(_rotationAngle);
