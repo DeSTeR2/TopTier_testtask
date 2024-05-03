@@ -7,16 +7,13 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] private Vector3 _move;
     [SerializeField] private float _speed;
     [SerializeField] private EnemyColliders[] _raycast;
-    
 
-    void Start()
-    {
-        
-    }
+    bool canMove = true;
 
-    // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
+
         transform.position += _move * _speed * Time.deltaTime;
     }
 
@@ -36,6 +33,10 @@ public class EnemyMove : MonoBehaviour
         }
         int index = Random.Range(0, 100) % possibleMoves.Count;
         _move = possibleMoves[index];
+    }
+
+    public void Stop() {
+        canMove = false;
     }
 }
  

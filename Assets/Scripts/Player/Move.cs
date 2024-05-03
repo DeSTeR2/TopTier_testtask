@@ -7,49 +7,67 @@ using UnityEngine.UIElements;
 
 public class Move : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private Vector3 _move;
     [SerializeField] private float _speed;
     [SerializeField] private Arrow _arrow;
     [SerializeField] private float _rotationAngle;
-    [SerializeField] private int _angle = 60;
+    [SerializeField] private int _angle;
     [SerializeField] private GameObject[] colliders;
+
+    [Space]
     [SerializeField] private GameObject _rotation;
+
+    [Header("Sound")]
     [SerializeField] private AudioClip _moveSound;
+    [SerializeField] private AudioManager _audioManager;
 
-    private AudioSource _moveAudio;
     private bool _isMoving = false;
-
+    private bool _isDead = false;
+    
     private int _canMove = 0;
     private Rigidbody2D _rb;
     private float _fullRotationAngle = 0;
 
+    private float _angleToUse = 360;
     // Start is called before the first frame update
     void Start() {
-        _moveAudio = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
     }
 
+    private void OnEnable() {
+        transform.position = Vector3.zero;
+        _isDead = false;
+        _isMoving = false;
+        _angleToUse = 360;
+        _rotation.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update() 
-    { 
+    {
+        if (_isDead) return;
+
         if (!_isMoving) {
             ChangeMoveVector(_rotationAngle);
             _arrow.ChangePosition(_move + transform.position);
         } else {
             transform.position += (_move * _speed * Time.deltaTime)*_canMove;
+            _angleToUse = _angle;
         }
+        
     }
 
     private void ChangeMoveVector(float angle) {
         SetVectorAngle(angle);
 
         _fullRotationAngle += angle;
-        if (_fullRotationAngle >= _angle) {
+        if (_fullRotationAngle >= _angleToUse) {
             _rotationAngle *= -1;
             _fullRotationAngle = 0;
         }
-        else if (_fullRotationAngle <= -_angle) {
+        else if (_fullRotationAngle <= -_angleToUse) {
             _rotationAngle *= -1;
             _fullRotationAngle = 0;
         }
@@ -80,9 +98,9 @@ public class Move : MonoBehaviour
         _move.y = newVector.y;
     }
 
-    public void MovePlayer() {
+    private void MovePlayer() {
         _rotation.SetActive(false);
-        _moveAudio.PlayOneShot(_moveSound);
+        _audioManager.PlaySound(_moveSound);
         _isMoving = true;
         _canMove = 1;
         _rotationAngle = Mathf.Abs(_rotationAngle);
@@ -106,5 +124,10 @@ public class Move : MonoBehaviour
             _rotation.SetActive(true);
             _canMove = 0;
         }
+    }
+
+    public void Dead() {
+        _isDead = true;
+        _rotation.SetActive(false);
     }
 }

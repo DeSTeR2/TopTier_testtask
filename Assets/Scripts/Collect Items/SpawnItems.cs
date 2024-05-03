@@ -8,7 +8,7 @@ public class SpawnItems : MonoBehaviour
 {
     [SerializeField] GameObject _itemPrefab;
     [SerializeField] GameObject _spawnArea;
-    [SerializeField] AudioSource _pickUpSource;
+    [SerializeField] AudioManager _audioManager;
     [SerializeField] AudioClip _pickUpSound;
 
     private GameObject _currentObject;
@@ -16,7 +16,6 @@ public class SpawnItems : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _pickUpSource = GetComponent<AudioSource>();
         _rt = _spawnArea.GetComponent<RectTransform>();
         Spawn();
     }
@@ -33,7 +32,7 @@ public class SpawnItems : MonoBehaviour
     }
 
     public void Respawn() {
-        _pickUpSource.PlayOneShot(_pickUpSound);
+        _audioManager.PlaySound(_pickUpSound);
         Spawn();
     }
 }
