@@ -12,4 +12,8 @@ public class AudioManager : MonoBehaviour
     public void PlaySound(AudioClip audio) {
         _audioSource.PlayOneShot(audio);
     }
+
+    public void PlaySound(AudioClip audio, float timeWait) {
+        _audioSource.PlayOneShot(audio);
+    }
 }

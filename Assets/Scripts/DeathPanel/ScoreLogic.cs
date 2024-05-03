@@ -13,6 +13,10 @@ public class ScoreLogic : MonoBehaviour
     [Space]
     [SerializeField] CollecItems _collectItem;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip _newBestSound;
+    [SerializeField] AudioManager _audioSource;
+
     // Start is called before the first frame update
     private void OnEnable() {
         int score = _collectItem._score;
@@ -21,8 +25,14 @@ public class ScoreLogic : MonoBehaviour
         int bestScore = PlayerPrefs.GetInt("Score");
         _bestScore.text = Mathf.Max(bestScore, score).ToString();
         if (bestScore < score) {
+            StartCoroutine(PlaySound());
             PlayerPrefs.SetInt("Score", score);
             _newBest.SetActive(true);
         }
+    }
+
+    private IEnumerator PlaySound() {
+        yield return new WaitForSeconds(1);
+        _audioSource.PlaySound(_newBestSound);
     }
 }
