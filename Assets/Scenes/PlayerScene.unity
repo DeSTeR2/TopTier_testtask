@@ -524,6 +524,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &498781016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2665269973097706074, guid: 075b02a38f8e7ba40870d31ab1ce7836, type: 3}
+  m_PrefabInstance: {fileID: 1826562138864321738}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dba0ecf079967e488bfa8b4663df3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1689,10 @@ PrefabInstance:
       propertyPath: _spawnItems
       value: 
       objectReference: {fileID: 548270696}
+    - target: {fileID: 6583027378108289388, guid: 6a4d1e55152738a41832675f1d1cb0b9, type: 3}
+      propertyPath: _changeBGColor
+      value: 
+      objectReference: {fileID: 498781016}
     - target: {fileID: 7939411857015285843, guid: 6a4d1e55152738a41832675f1d1cb0b9, type: 3}
       propertyPath: _scaler
       value: 55
