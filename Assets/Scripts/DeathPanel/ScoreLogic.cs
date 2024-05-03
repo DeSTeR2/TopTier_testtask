@@ -19,7 +19,7 @@ public class ScoreLogic : MonoBehaviour
         _currentScore.text = score.ToString();
 
         int bestScore = PlayerPrefs.GetInt("Score");
-        _bestScore.text = score.ToString();
+        _bestScore.text = Mathf.Max(bestScore, score).ToString();
         if (bestScore < score) {
             PlayerPrefs.SetInt("Score", score);
             _newBest.SetActive(true);

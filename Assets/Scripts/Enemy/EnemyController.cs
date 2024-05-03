@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemy;
+    [SerializeField] private GameObject[] _enemy;
     [SerializeField] private GameObject[] _spawnPoints;
-    [SerializeField] private int _enemyNumber;
+    
     bool _start = true;
+    int _enemyNumber;
+    int _enemyIndex;
+
     private void Start() {
 
+        _enemyNumber = Random.Range(1, 4);
+        _enemyIndex = Random.Range(0, _enemy.Length);
+
         for (int i=0; i<_enemyNumber;i++) {
-            Instantiate(_enemy, _spawnPoints[i].transform.position, Quaternion.identity, transform);
+            Instantiate(_enemy[_enemyIndex], _spawnPoints[i].transform.position, Quaternion.identity, transform);
         }
         _start = false; 
     }
@@ -22,6 +28,8 @@ public class EnemyController : MonoBehaviour
         for (int i=0; i< _enemyNumber; i++) {
             Destroy(transform.GetChild(i).gameObject);
         }
+        _enemyNumber = Random.Range(1, 4);
+        _enemyIndex = Random.Range(0, _enemy.Length);
         Start();
     }
 
