@@ -26,7 +26,7 @@ public class SpawnItems : MonoBehaviour
         float width = _rt.rect.width / 2.0f;
         float height = _rt.rect.height / 2.0f;
         Vector3 spawnPosition = new Vector3(Random.Range(-width, width),
-                  Random.Range(-height, height), 0)/120f;
+                  Random.Range(-height, height), 0)/165f;
         spawnPosition = new Vector3(spawnPosition.x + _rt.position.x, spawnPosition.y + _rt.position.y,0);
         Instantiate(_currentObject, spawnPosition, Quaternion.identity, transform);
     }
